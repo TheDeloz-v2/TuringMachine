@@ -13,8 +13,53 @@ class TuringMachine:
         self.accepting_states = file.accepting_states
         self.transition_function = file.transition_function
 
+        self.max_transitions = 1000
+
         self.current_state = self.initial_state
         self.tape = None
 
     def run(self, input_string):
+        """
+        This function runs the Turing Machine with the given input string.
+        :param input_string: The input string to be processed by the Turing Machine.
+        :return: True if the Turing Machine accepts the input string, False otherwise.
+        """
         self.tape = Tape(input_string, self.tape_alphabet)
+        call_depth = 0
+
+        while call_depth < self.max_transitions:
+            call_depth += 1
+            if self.current_state in self.accepting_states:
+                print("Accepting state reached.")
+                return True
+            else:
+                try:
+                    # Perform one step of the Turing Machine. If it fails, by any reason, it will raise an exception.
+                    self._step()
+                except:
+                    self._print_tape()
+                    if self.current_state in self.accepting_states:
+                        return True
+                    else:
+                        return False
+
+
+    def _step(self):
+        """
+        This function performs one step of the Turing Machine.
+        :return: None
+        """
+        self._print_tape()
+        # Get the current symbol under the head.
+        current_symbol = self.tape.get_symbol()
+        # Get the transition function for the current state and symbol.
+        transition_function = self.transition_function[self.current_state][current_symbol]
+        # Get the next state.
+        self.current_state = transition_function[0]
+        # Write the new symbol.
+        self.tape.write_symbol(transition_function[1])
+        # Move the head.
+        self.tape.move_head(transition_function[2])
+
+    def _print_tape(self):
+        print(f"{self.current_state} | {self.tape}")
