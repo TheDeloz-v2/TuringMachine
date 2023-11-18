@@ -11,7 +11,7 @@ class Tape:
         This function initializes the tape with the input string.
         :return: None
         """
-        self.tape = ["ß"] + list(self.input_string) + ["ß"]
+        self.tape = ["B"] + list(self.input_string) + ["B"]
         self.head = 1
 
     def get_symbol(self):
