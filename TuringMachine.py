@@ -24,6 +24,12 @@ class TuringMachine:
         :param input_string: The input string to be processed by the Turing Machine.
         :return: True if the Turing Machine accepts the input string, False otherwise.
         """
+        for char in input_string:
+            if char not in self.tape_alphabet:
+                print(f"Invalid input string: {input_string}")
+                print(f"Character '{char}' is not in the alphabet.")
+                return False
+            
         self.tape = Tape(input_string, self.tape_alphabet)
         call_depth = 0
 
