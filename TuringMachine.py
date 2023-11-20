@@ -63,3 +63,6 @@ class TuringMachine:
 
     def _print_tape(self):
         print(f"{self.current_state} | {self.tape}")
+    
+    def _getFinalString(self):
+        return self.tape
