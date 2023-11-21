@@ -32,13 +32,15 @@ class Tape:
     def move_head(self, direction):
         """
         This function moves the head of the tape.
-        :param direction: The direction to move the head. R for right, L for left.
+        :param direction: The direction to move the head. R for right, L for left, S for stay static.
         :return: None
         """
         if direction == "R":
             self.head += 1
         elif direction == "L":
             self.head -= 1
+        elif direction == "S":
+            self.head = self.head
         else:
             raise Exception("Invalid direction.")
 
