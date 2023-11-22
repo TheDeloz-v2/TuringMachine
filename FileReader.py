@@ -15,7 +15,6 @@ class FileReader:
         self.transition_function = None
 
         self._read()  # Read the file and store the data in the class variables.
-        self._validate()  # Validate the data read from the file.
 
     def _read(self):
         try:
@@ -36,10 +35,3 @@ class FileReader:
         except KeyError:
             print(f"File {self.filename} is not a valid Turing Machine definition file. Missing key.")
             exit(1)
-
-    def _validate(self):
-        """
-        This function validates the data read from the file.
-        :return: None if the data is valid, otherwise it exits the program.
-        """
-        pass

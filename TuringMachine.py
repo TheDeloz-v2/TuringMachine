@@ -62,7 +62,10 @@ class TuringMachine:
         self.tape.move_head(transition_function[2])
 
     def _print_tape(self):
-        print(f"{self.current_state} | {self.tape}")
+        if (len(self.current_state) < 7):
+            print(f"{self.current_state} \t \t | {self.tape}")
+        else:
+            print(f"{self.current_state} \t | {self.tape}")
     
     def _getFinalString(self):
         return self.tape
