@@ -2,7 +2,7 @@ from TuringMachine import TuringMachine
 
 
 def main():
-    input_string = "1100011"
+    input_string = "7"
     tm = TuringMachine("MachineDefinition.json")
     is_accepted = tm.run(input_string)
     final_string = tm._getFinalString()
