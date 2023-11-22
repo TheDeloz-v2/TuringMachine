@@ -37,8 +37,13 @@ class Tape:
         """
         if direction == "R":
             self.head += 1
+            if self.head == len(self.tape):
+                self.tape.append("B")
         elif direction == "L":
             self.head -= 1
+            if self.head == -1:
+                self.tape.insert(0, "B")
+                self.head = 0
         elif direction == "S":
             self.head = self.head
         else:

@@ -23,7 +23,7 @@ class FileReader:
                 data = json.load(f)
                 self.states = data["states"]
                 self.alphabet = data["alphabet"]
-                self.tape_alphabet = data["tape_alphabet"] + ["ß"]
+                self.tape_alphabet = data["tape_alphabet"] + ["B"]
                 self.initial_state = data["initial_state"]
                 self.accepting_states = data["accepting_states"]
                 self.transition_function = data["transition_function"]
